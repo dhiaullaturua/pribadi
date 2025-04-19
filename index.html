@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nembak Cewek</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #flower {
+            display: none;
+            margin-top: 20px;
+        }
+        #noButton {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="slide1">
+        <h2>Hai Lusyyyyy</h2>
+        <p>I like you, jangan bertanya saya suka kamu karena apa karena cinta itu tidak bisa diungkapkan dengan kata-kata.</p>
+        <button onclick="nextSlide()">Next</button>
+    </div>
+
+    <div id="slide2" style="display: none;">
+        <h2></h2>
+        <p>Apakah kamu mau jadi pacar saya?</p>
+        <button id="yesButton" onclick="showFlowers()">Ya</button>
+        <button id="noButton" onclick="moveNoButton()">Tidak</button>
+    </div>
+
+    <img id="flower" src="https://via.placeholder.com/150?text=Bunga" alt="Bunga" />
+</div>
+
+<script>
+    function nextSlide() {
+        document.getElementById('slide1').style.display = 'none';
+        document.getElementById('slide2').style.display = 'block';
+    }
+
+    function showFlowers() {
+        document.getElementById('flower').style.display = 'block';
+        document.getElementById('slide2').style.display = 'none';
+    }
+
+    function moveNoButton() {
+        const noButton = document.getElementById('noButton');
+        const container = document.querySelector('.container');
+        const randomX = Math.random() * (container.clientWidth - noButton.clientWidth);
+        const randomY = Math.random() * (container.clientHeight - noButton.clientHeight - 50); // 50 for padding
+
+        noButton.style.position = 'absolute';
+        noButton.style.left = randomX + 'px';
+        noButton.style.top = randomY + 'px';
+    }
+</script>
+
+</body>
+</html>
